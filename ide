@@ -1,8 +1,39 @@
-set nocompatible
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+"GIT COMMAND FOR INSTALLING VUNDLE"
+"git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
+
+" set the runtime path to include Vundle and initialize "
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required "
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'luochen1990/rainbow'
+Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-bufferline'
+Plugin 'yggdroot/indentline'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'joshdick/onedark.vim'
+" Plugin 'valloric/youcompleteme' "
+" Plugin 'w0rp/ale'  "
+" Plugin 'tpope/vim-fugitive'  "
+
+" All of your Plugins must be added before the following line "
+call vundle#end()            " required
+filetype plugin indent on    " required
+" Put your non-Plugin stuff after this line"
 
 
+
+"color scheme stuff"
+if (has("termguicolors"))
+    set termguicolors
+endif
 syntax on
-colorscheme ron
+colorscheme onedark
+let g:rainbow_active = 1 "default to rainbow brackets on"
 
 "file explorer"
 let g:netrw_banner=0  "no banner"
@@ -13,7 +44,6 @@ let g:netrw_preview=1  "privew vert"
 
 "default formatting"
 set hlsearch  "highlight search"
-set hidden "allow buffer abandonment"
 set laststatus=2   "always show status"
 set splitright    "default vert split"
 set splitbelow "causes splits below"
@@ -26,14 +56,11 @@ set tabstop=4 "number of spaces per tab"
 set shiftwidth=4 "indent size"
 set expandtab "tabs are 4 spaces"
 set clipboard=unnamed "allows pasting from OS clipboard"
-
-"normal mode + clear highlighting"
-inoremap jj <Esc>:silent! nohls<cr> 
-nnoremap G Gzz
+inoremap jj <Esc>  
 
 "nerd tree substitue"
-nnoremap <leader>f :Vex 23<CR>
-nnoremap <leader>c :q<CR>
+nnoremap ff :Vex 23<CR>
+nnoremap FF :q<CR>
 
 "code folding" 
 autocmd BufWinLeave *.* mkview
@@ -41,13 +68,12 @@ autocmd BufWinEnter *.* silent loadview
 
 "autocomplete"
 set completeopt=longest,menuone
-inoremap <leader><leader> <C-n>
 
+"turn off highlighting"
+nnoremap mm :silent! nohls<cr>
 
 "a div and component shortcut""
 inoremap <leader>div <div className=""><CR><CR></div><esc>kkf"a
-"paragraph tag"
-inoremap <leader>p <p><cr><cr></p><esc>ki<tab>
 "react component tag"
 inoremap <leader>c </><esc>hi
 "for loop"
@@ -68,38 +94,4 @@ set statusline=
 set statusline+=\ %F
 set statusline+=\ %M
 set statusline+=\ %R
-set statusline+=\ %L
-
-"improved window nav"
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-
-"basic pairs functionality with no Plugin"
-inoremap ( ()<esc>i
-inoremap ) <esc>la
-inoremap [ []<esc>i
-inoremap ] <esc>la
-inoremap { {}<esc>i
-inoremap } <esc>la
-inoremap {<CR> {<CR><CR>}<C-o>k<tab>
-inoremap " ""<esc>i
-inoremap "" <C-o>a
-inoremap ' ''<esc>i
-inoremap '' <C-o>a
-
-"preview markdown files on save"
-"requires latex and pandoc"
-autocmd BufWritePost *.md !pandoc <afile> -o preview.pdf
-"save a session on save"
-autocmd BufWritePost *.* :mks lastSession.vim
-
-"load a docs file everytime a .js file is opened"
-au BufRead *.js :badd ~/.vim/docs.txt
-au BufNewFile *.js :badd ~/.vim/docs.txt
-au BufRead * :badd ~/.vim/git.txt
-au BufNewFile * :badd ~/.vim/git.txt
-
-"recursive rough spell check macro: requires turning spelling on first with :set spell"
-let @s="]s1z=@s"
+set statusline+=\ %=%L
