@@ -1,0 +1,5 @@
+dconf editor: on-click-action → override, set to minimize
+dconf editor: show apps on top
+additional drivers check
+set xkill shortcut
+disable ctrl+alt+del logout shortcut

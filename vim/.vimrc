@@ -47,7 +47,7 @@ inoremap <leader><leader> <C-n>
 "a div and component shortcut""
 inoremap <leader>div <div className=""><CR><CR></div><esc>kkf"a
 "paragraph tag"
-inoremap <leader>p <p><cr><cr></p><esc>ki<tab>
+inoremap <leader>p <p><cr><cr></p><esc>ki
 "react component tag"
 inoremap <leader>c </><esc>hi
 "for loop"
@@ -93,13 +93,13 @@ inoremap '' <C-o>a
 "requires latex and pandoc"
 autocmd BufWritePost *.md !pandoc <afile> -o preview.pdf
 "save a session on save"
-autocmd BufWritePost *.* :mks lastSession.vim
+autocmd BufWritePost *.* :mks! %.vim
 
 "load a docs file everytime a .js file is opened"
 au BufRead *.js :badd ~/.vim/docs.txt
 au BufNewFile *.js :badd ~/.vim/docs.txt
-au BufRead * :badd ~/.vim/git.txt
-au BufNewFile * :badd ~/.vim/git.txt
+au BufRead * :badd ~/.vim/git.md
+au BufNewFile * :badd ~/.vim/git.md
 
 "recursive rough spell check macro: requires turning spelling on first with :set spell"
 let @s="]s1z=@s"

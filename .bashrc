@@ -8,7 +8,6 @@ case $- in
       *) return;;
 esac
 
-neofetch
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -59,7 +58,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='\[\e[0;38;5;132m\]\A\[\e[0m\]|\[\e[0;38;5;133m\]\d\[\e[0m\]|\[\e[0;38;5;82m\]$(ip route get 1.1.1.1 | awk -F"src " '"'"'NR==1{split($2,a," ");print a[1]}'"'"')\n\[\e[0;38;5;76m\]\u\[\e[0;38;5;35m\]@\[\e[0;38;5;77m\]\h\[\e[0m\]:\[\e[0;96m\]\w\[\e[0;93m\]\$\[\e[0m\] \[$(tput sgr0)\]'
+    PS1='\[\e[0;38;5;132m\]\A\[\e[0m\]|\[\e[0;38;5;133m\]\d\[\e[0m\]|\[\e[0;38;5;82m\]$(ip route get 1.1.1.1 | awk -F"src " '"'"'NR==1{split($2,a," ");print a[1]}'"'"')\n\[\e[0;38;5;76m\]\u\[\e[0;38;5;35m\]@\[\e[0;38;5;77m\]\h\[\e[0m\]:\[\e[0;96m\]\w\[\e[0;93m\]\[\e[0m\](\[\e[0m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\[\e[0m\])\[\e[0m\]\$\[\e[0m\] \[$(tput sgr0)\]'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -73,6 +72,9 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+# set vim keybinds
+set -o vi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
