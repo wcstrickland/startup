@@ -8,7 +8,7 @@
 
 `mv /usr/share/doc/alacritty/example/alacrityy.yml ~/.config/alacritty/`
 
-[**one dark theme for alacritty**](https://gist.github.com/r-darwish/f8bb21a6c89a02c4bef76cc38bddad39)
+[one dark theme for alacritty](https://gist.github.com/r-darwish/f8bb21a6c89a02c4bef76cc38bddad39)
 
 # fish
 

@@ -91,7 +91,7 @@ inoremap '' <C-o>a
 
 "preview markdown files on save"
 "requires latex and pandoc"
-autocmd BufWritePost *.md !pandoc <afile> -o preview.pdf
+autocmd BufWritePost *.md !pandoc <afile> -o %.pdf
 "save a session on save"
 autocmd BufWritePost *.* :mks! %.vim
 
