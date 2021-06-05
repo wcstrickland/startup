@@ -1,0 +1,12 @@
+#!/bin/bash
+
+helper() { (echo -e "Could not find $1. \nDid you mean....\n" && find -iname "*$1*" -type d)| batcat; }
+
+cd /usr/share/doc/
+if cd $1
+then
+    ranger || vim /usr/share/doc/$1
+else
+    helper $1
+fi
+
