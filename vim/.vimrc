@@ -62,6 +62,10 @@ inoremap <leader>map map((x) => ())<Esc>hi
 inoremap <leader>func function (){<cr>console.log();<cr>}<esc>kkf(i
 "arrow function"
 inoremap <leader>> ()=>{<cr>console.log();<cr>}<esc>kkf)i
+"go boiler"
+inoremap <leader>go package main<cr><cr>import (<cr><tab>"fmt"<cr>)<cr>func main(){<cr><tab>fmt.Println("helloworld")<cr>}
+"go errorcheck"
+inoremap <leader>err if err != nil {<cr><tab>fmt.Println("error:", err)<cr>}
 
 "simple statusline"
 set statusline=
@@ -91,15 +95,21 @@ inoremap '' <C-o>a
 
 "preview markdown files on save"
 "requires latex and pandoc"
-autocmd BufWritePost *.md !pandoc <afile> -o %.pdf
+"autocmd BufWritePost *.md !pandoc <afile> -o %.pdf"
+
 "save a session on save"
-autocmd BufWritePost *.* :mks! %.vim
+"autocmd BufWritePost *.* :mks! %.vim"
+
+"format go on save"
+autocmd BufWritePost *.go !go fmt %
 
 "load a docs file everytime a .js file is opened"
 au BufRead *.js :badd ~/.vim/docs.txt
 au BufNewFile *.js :badd ~/.vim/docs.txt
-au BufRead * :badd ~/.vim/git.md
-au BufNewFile * :badd ~/.vim/git.md
+au BufRead *.go :badd ~/.vim/goDoc.go
+au BufNewFile *.go :badd ~/.vim/goDoc.go
+"au BufRead * :badd ~/.vim/git.md"
+"au BufNewFile * :badd ~/.vim/git.md"
 
 "recursive rough spell check macro: requires turning spelling on first with :set spell"
 let @s="]s1z=@s"
