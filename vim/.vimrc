@@ -35,9 +35,6 @@ nnoremap G Gzz
 nnoremap <leader>f :Vex 23<CR>
 nnoremap <leader>c :q<CR>
 
-"bulk commenting"
-vnoremap <C-_> :norm i//<esc>
-
 "code folding" 
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
@@ -82,6 +79,9 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
+
+vnoremap <c-_> :norm i//<esc>
+vnoremap <leader># :norm i#<esc>
 
 "basic pairs functionality with no Plugin"
 inoremap ( ()<esc>i
