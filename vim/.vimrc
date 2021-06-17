@@ -35,6 +35,9 @@ nnoremap G Gzz
 nnoremap <leader>f :Vex 23<CR>
 nnoremap <leader>c :q<CR>
 
+"bulk commenting"
+vnoremap <C-_> :norm i//<esc>
+
 "code folding" 
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
